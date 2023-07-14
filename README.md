@@ -1,7 +1,7 @@
 # SkriptLibrary
 A Large Community made Repository of Skripts (.sk) for your minecraft server
 
-Do not remove the Copyright section from the skripts in any context as that would be a breach of the liscense provided by the developers here at skript library (The section below is what this is refering too):
+Do not remove the Copyright section from the skripts in any context as that would be a breach of the liscense provided by the developers here at skript library (Apache Licence 2.0) (The section below is what this is refering too):
 
 " Copyright [yyyy] [name of copyright owner]
 
