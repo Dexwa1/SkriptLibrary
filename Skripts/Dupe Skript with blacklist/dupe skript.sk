@@ -1,0 +1,56 @@
+command /dupe:
+    trigger:
+        if {blacklisted::*} does not contain player's held item:
+            give player player's held item
+        else:
+            send "&c%player's held item's type% is blacklisted!"
+            play sound "block.note_block.bass" at pitch 0 to player
+
+command /dupeblacklist <text>:
+    aliases: /itemblacklist
+    permission: op
+    usage: /dupeblacklist <add | remove | clear>
+    trigger:
+        if arg-1 = "add":
+            if {blacklisted::*} does not contain player's held item:
+                add player's held item to {blacklisted::*}
+                send "&6Item blacklisted!" to player
+            else:
+                send "&cAlready blacklisted!" to player
+                play sound "block.note_block.bass" at pitch 0 to player
+        if arg-1 = "remove":
+            if {blacklisted::*} does not contain player's held item:
+                send "&cThis item isn't blacklisted!" to player
+                play sound "block.note_block.bass" at pitch 0 to player
+            else:
+                remove player's held item's type from {blacklisted::*}
+                send "&6Item unblacklisted!" to player
+        if arg-1 = "clear":
+            if {blacklisted::*} is set:
+                clear {blacklisted::*}
+                send "&6Cleared!" to executor
+            else:
+                send "&cBlacklist list is empty." to executor
+                play sound "block.note_block.bass" at pitch 0 to player
+        if arg-1 = "list":
+            if {blacklisted::*} is set:
+                send "&6Blacklisted items:" to executor
+                loop {blacklisted::*}:
+                    send "&b- %loop-value%" to executor
+            else:
+                send "&cNo items are blacklisted" to executor
+                play sound "block.note_block.bass" at pitch 0 to player
+                
+   Copyright [2023] [Dexter Bell + Other Artists - Skript Library]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
